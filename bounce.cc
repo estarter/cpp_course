@@ -1,7 +1,7 @@
 #include <iostream>
 
 void drawParticle(const double particlePosition, const char& particleSymbol);
-void moveParticle(double& particlePosition, double& particleSpeed);
+void moveParticle(double* particlePosition, double* particleSpeed);
 
 const int maxColumn = 80;
 const int minColumn = 0;
@@ -16,7 +16,7 @@ int main() {
 
   while (timeStep < stopTime) {
     drawParticle(particlePosition, particleSymbol);
-    moveParticle(particlePosition, particleSpeed);
+    moveParticle(&particlePosition, &particleSpeed);
     timeStep++;
   }
 }
@@ -28,13 +28,13 @@ void drawParticle(const double particlePosition, const char& particleSymbol) {
     std::cout << particleSymbol << std::endl;
 }
 
-void moveParticle(double& particlePosition, double& particleSpeed) {
-    particlePosition += particleSpeed;
-    if (particlePosition >= maxColumn) {
-      particlePosition = maxColumn;
-      particleSpeed = -particleSpeed;
-    } else if (particlePosition < minColumn) {
-      particlePosition = minColumn;
-      particleSpeed = -particleSpeed;
+void moveParticle(double* particlePosition, double* particleSpeed) {
+    *particlePosition += *particleSpeed;
+    if (*particlePosition >= maxColumn) {
+      *particlePosition = maxColumn;
+      *particleSpeed = -*particleSpeed;
+    } else if (*particlePosition < minColumn) {
+      *particlePosition = minColumn;
+      *particleSpeed = -*particleSpeed;
     }    
 }
