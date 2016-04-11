@@ -1,6 +1,6 @@
 #include <iostream>
 
-void clearScreen(char screen[]);
+void clearScreen(char* screen);
 void drawScreen(char screen[]);
 void drawParticle(char screen[], const int particlePosition, const char& particleSymbol);
 void moveParticle(double& particlePosition, double& particleSpeed);
@@ -32,9 +32,10 @@ int main() {
   }
 }
 
-void clearScreen(char screen[]) {
-  for (int i = 0; i < screenSize; i++) {
-    screen[i] = ' ';
+void clearScreen(char* screen) {
+  char * end = screen + screenSize;
+  for (; screen < end; screen++) {
+    *screen = ' ';
   }
 }
 void drawScreen(char screen[]) {
