@@ -1,6 +1,6 @@
 #include <iostream>
 
-void drawParticle(double particlePosition, char particleSymbol);
+void drawParticle(const double particlePosition, const char& particleSymbol);
 void moveParticle(double& particlePosition, double& particleSpeed);
 
 const int maxColumn = 80;
@@ -21,7 +21,7 @@ int main() {
   }
 }
 
-void drawParticle(double particlePosition, char particleSymbol) {
+void drawParticle(const double particlePosition, const char& particleSymbol) {
     for (int i = 0; i < particlePosition; i++) {
       std::cout << " ";
     }
