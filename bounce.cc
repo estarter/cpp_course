@@ -11,12 +11,28 @@ const int screenSize = maxColumn+1;
 
 const int particleAmount = 4;
 
+struct Particle {
+  char symbol;
+  double position;
+  double speed;
+};
+
 int main() {
   char* screen = new char[screenSize];
 
-  char particleSymbols[particleAmount] = {'x', '+', 'a', 'b'};
-  double particlePositions[particleAmount] = {1, 2, 3, 4};
-  double particleSpeeds[particleAmount] = {1.1, 2.2, 3.3, 4.4};
+  Particle particleList[particleAmount];
+  particleList[0].symbol = 'x';
+  particleList[1].symbol = '+';
+  particleList[2].symbol = 'a';
+  particleList[3].symbol = 'b';
+  particleList[0].position = 1;
+  particleList[1].position = 2;
+  particleList[2].position = 3;
+  particleList[3].position = 4;
+  particleList[0].speed = 1.1;
+  particleList[1].speed = 2.2;
+  particleList[2].speed = 3.3;
+  particleList[3].speed = 4.4;
 
   int timeStep = 0;
   int stopTime = 60;
@@ -24,8 +40,8 @@ int main() {
   while (timeStep < stopTime) {
     clearScreen(screen);
     for (int i = 0; i < particleAmount; i++) {
-      drawParticle(screen, particlePositions[i], particleSymbols[i]);
-      moveParticle(particlePositions[i], particleSpeeds[i]);
+      drawParticle(screen, particleList[i].position, particleList[i].symbol);
+      moveParticle(particleList[i].position, particleList[i].speed);
     }
     drawScreen(screen);
     timeStep++;
