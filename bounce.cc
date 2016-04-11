@@ -15,7 +15,7 @@ struct Particle {
 
 void clearScreen(char* screen);
 void drawScreen(char screen[]);
-void drawParticle(char screen[], const Particle& particle);
+void drawParticle(char screen[], const Particle* particle);
 void moveParticle(Particle& particle);
 
 int main() {
@@ -41,7 +41,7 @@ int main() {
   while (timeStep < stopTime) {
     clearScreen(screen);
     for (int i = 0; i < particleAmount; i++) {
-      drawParticle(screen, particleList[i]);
+      drawParticle(screen, &particleList[i]);
       moveParticle(particleList[i]);
     }
     drawScreen(screen);
@@ -63,8 +63,8 @@ void drawScreen(char screen[]) {
   std::cout << std::endl;
 }
 
-void drawParticle(char screen[], const Particle& particle) {
-  screen[static_cast<int>(particle.position)] = particle.symbol;
+void drawParticle(char screen[], const Particle* particle) {
+  screen[static_cast<int>(particle->position)] = particle->symbol;
 }
 
 void moveParticle(Particle& particle) {
