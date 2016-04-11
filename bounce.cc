@@ -9,23 +9,23 @@ const int maxColumn = 80;
 const int minColumn = 0;
 char screen[maxColumn];
 
+const int particleAmount = 4;
+
 int main() {
 
-  char particleSymbol = 'x';
-  double particlePosition = 0;
-  double particleSpeed = 6.3;
-  char particleSymbol2 = '+';
-  double particlePosition2 = 3;
-  double particleSpeed2 = 3.3;
+  char particleSymbols[particleAmount] = {'x', '+', 'a', 'b'};
+  double particlePositions[particleAmount] = {1, 2, 3, 4};
+  double particleSpeeds[particleAmount] = {1.1, 2.2, 3.3, 4.4};
+
   int timeStep = 0;
   int stopTime = 60;
 
   while (timeStep < stopTime) {
     clearScreen();
-    drawParticle(particlePosition, particleSymbol);
-    moveParticle(particlePosition, particleSpeed);
-    drawParticle(particlePosition2, particleSymbol2);
-    moveParticle(particlePosition2, particleSpeed2);
+    for (int i = 0; i < particleAmount; i++) {
+      drawParticle(particlePositions[i], particleSymbols[i]);
+      moveParticle(particlePositions[i], particleSpeeds[i]);
+    }
     drawScreen();
     timeStep++;
   }
