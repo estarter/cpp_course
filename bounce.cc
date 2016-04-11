@@ -20,12 +20,12 @@ struct Particle {
     this->position = position;
     this->speed = speed;
   }
-  void drawParticle(char screen[]) {
+  void drawParticle(char screen[]) const {
     screen[static_cast<int>(this->position)] = this->symbol;
   }
 
   void moveParticle() {
-      this->position += this->speed;
+      position += speed;
       if (this->position >= maxColumn) {
         this->position = maxColumn;
         this->speed = -this->speed;
