@@ -21,6 +21,12 @@ struct Particle {
     this->speed = speed;
   }
   void drawParticle(char screen[]) const {
+    std::cout << "xxx";
+    screen[static_cast<int>(this->position)] = this->symbol;
+  }
+
+  void drawParticle(char screen[]) {
+    std::cout << "yyy";
     screen[static_cast<int>(this->position)] = this->symbol;
   }
 
@@ -56,6 +62,10 @@ int main() {
   while (timeStep < stopTime) {
     clearScreen(screen);
     for (int i = 0; i < particleAmount; i++) {
+      Particle p = particleList[0];
+      p.position += 20;
+      const Particle& pp = p;
+      pp.drawParticle(screen);
       particleList[i].drawParticle(screen);
       particleList[i].moveParticle();
     }
