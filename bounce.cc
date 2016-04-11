@@ -14,6 +14,9 @@ int main() {
   char particleSymbol = 'x';
   double particlePosition = 0;
   double particleSpeed = 6.3;
+  char particleSymbol2 = '+';
+  double particlePosition2 = 3;
+  double particleSpeed2 = 3.3;
   int timeStep = 0;
   int stopTime = 60;
 
@@ -21,6 +24,8 @@ int main() {
     clearScreen();
     drawParticle(particlePosition, particleSymbol);
     moveParticle(particlePosition, particleSpeed);
+    drawParticle(particlePosition2, particleSymbol2);
+    moveParticle(particlePosition2, particleSpeed2);
     drawScreen();
     timeStep++;
   }
