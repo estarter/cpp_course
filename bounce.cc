@@ -1,5 +1,3 @@
-// N.B. This program contains a bug, on purpose.
-
 #include <iostream>
 
 int main() {
@@ -17,10 +15,11 @@ int main() {
     }
     std::cout << particleSymbol << std::endl;
     particlePosition += particleSpeed;
+
     if (particlePosition >= maxColumn) {
       particlePosition = maxColumn;
       particleSpeed = -particleSpeed;
-    } else if (particleSpeed < 0) {
+    } else if (particlePosition < 0) {
       particlePosition = 0;
       particleSpeed = -particleSpeed;
     }    
