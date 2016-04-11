@@ -7,11 +7,12 @@ void moveParticle(double& particlePosition, double& particleSpeed);
 
 const int maxColumn = 80;
 const int minColumn = 0;
+const int screenSize = maxColumn+1;
 
 const int particleAmount = 4;
 
 int main() {
-  char screen[maxColumn];
+  char screen[screenSize];
 
   char particleSymbols[particleAmount] = {'x', '+', 'a', 'b'};
   double particlePositions[particleAmount] = {1, 2, 3, 4};
@@ -32,12 +33,12 @@ int main() {
 }
 
 void clearScreen(char screen[]) {
-  for (int i = 0; i < maxColumn; i++) {
+  for (int i = 0; i < screenSize; i++) {
     screen[i] = ' ';
   }
 }
 void drawScreen(char screen[]) {
-  for (int i = 0; i < maxColumn; i++) {
+  for (int i = 0; i < screenSize; i++) {
     std::cout << screen[i];
   }
   std::cout << std::endl;
