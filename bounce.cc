@@ -1,10 +1,13 @@
 #include <iostream>
 
+void clearScreen();
+void drawScreen();
 void drawParticle(const double particlePosition, const char& particleSymbol);
 void moveParticle(double& particlePosition, double& particleSpeed);
 
 const int maxColumn = 80;
 const int minColumn = 0;
+char screen[maxColumn];
 
 int main() {
 
@@ -15,17 +18,28 @@ int main() {
   int stopTime = 60;
 
   while (timeStep < stopTime) {
+    clearScreen();
     drawParticle(particlePosition, particleSymbol);
     moveParticle(particlePosition, particleSpeed);
+    drawScreen();
     timeStep++;
   }
 }
 
+void clearScreen() {
+  for (int i = 0; i < maxColumn; i++) {
+    screen[i] = ' ';
+  }
+}
+void drawScreen() {
+  for (int i = 0; i < maxColumn; i++) {
+    std::cout << screen[i];
+  }
+  std::cout << std::endl;
+}
+
 void drawParticle(const double particlePosition, const char& particleSymbol) {
-    for (int i = 0; i < particlePosition; i++) {
-      std::cout << " ";
-    }
-    std::cout << particleSymbol << std::endl;
+  screen[static_cast<int>(particlePosition)] = particleSymbol;
 }
 
 void moveParticle(double& particlePosition, double& particleSpeed) {
