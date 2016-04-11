@@ -12,7 +12,7 @@ const int screenSize = maxColumn+1;
 const int particleAmount = 4;
 
 int main() {
-  char screen[screenSize];
+  char* screen = new char[screenSize];
 
   char particleSymbols[particleAmount] = {'x', '+', 'a', 'b'};
   double particlePositions[particleAmount] = {1, 2, 3, 4};
@@ -30,6 +30,7 @@ int main() {
     drawScreen(screen);
     timeStep++;
   }
+  delete[] screen;
 }
 
 void clearScreen(char* screen) {
