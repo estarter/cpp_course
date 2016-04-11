@@ -1,10 +1,5 @@
 #include <iostream>
 
-void clearScreen(char* screen);
-void drawScreen(char screen[]);
-void drawParticle(char screen[], const int particlePosition, const char& particleSymbol);
-void moveParticle(double& particlePosition, double& particleSpeed);
-
 const int maxColumn = 80;
 const int minColumn = 0;
 const int screenSize = maxColumn+1;
@@ -16,6 +11,12 @@ struct Particle {
   double position;
   double speed;
 };
+
+
+void clearScreen(char* screen);
+void drawScreen(char screen[]);
+void drawParticle(char screen[], const Particle& particle);
+void moveParticle(Particle& particle);
 
 int main() {
   char* screen = new char[screenSize];
@@ -40,8 +41,8 @@ int main() {
   while (timeStep < stopTime) {
     clearScreen(screen);
     for (int i = 0; i < particleAmount; i++) {
-      drawParticle(screen, particleList[i].position, particleList[i].symbol);
-      moveParticle(particleList[i].position, particleList[i].speed);
+      drawParticle(screen, particleList[i]);
+      moveParticle(particleList[i]);
     }
     drawScreen(screen);
     timeStep++;
@@ -62,17 +63,17 @@ void drawScreen(char screen[]) {
   std::cout << std::endl;
 }
 
-void drawParticle(char screen[], const int particlePosition, const char& particleSymbol) {
-  screen[particlePosition] = particleSymbol;
+void drawParticle(char screen[], const Particle& particle) {
+  screen[static_cast<int>(particle.position)] = particle.symbol;
 }
 
-void moveParticle(double& particlePosition, double& particleSpeed) {
-    particlePosition += particleSpeed;
-    if (particlePosition >= maxColumn) {
-      particlePosition = maxColumn;
-      particleSpeed = -particleSpeed;
-    } else if (particlePosition < minColumn) {
-      particlePosition = minColumn;
-      particleSpeed = -particleSpeed;
+void moveParticle(Particle& particle) {
+    particle.position += particle.speed;
+    if (particle.position >= maxColumn) {
+      particle.position = maxColumn;
+      particle.speed = -particle.speed;
+    } else if (particle.position < minColumn) {
+      particle.position = minColumn;
+      particle.speed = -particle.speed;
     }    
 }
