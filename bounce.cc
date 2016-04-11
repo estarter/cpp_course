@@ -2,7 +2,7 @@
 
 void clearScreen();
 void drawScreen();
-void drawParticle(const double particlePosition, const char& particleSymbol);
+void drawParticle(const int particlePosition, const char& particleSymbol);
 void moveParticle(double& particlePosition, double& particleSpeed);
 
 const int maxColumn = 80;
@@ -38,8 +38,8 @@ void drawScreen() {
   std::cout << std::endl;
 }
 
-void drawParticle(const double particlePosition, const char& particleSymbol) {
-  screen[static_cast<int>(particlePosition)] = particleSymbol;
+void drawParticle(const int particlePosition, const char& particleSymbol) {
+  screen[particlePosition] = particleSymbol;
 }
 
 void moveParticle(double& particlePosition, double& particleSpeed) {
