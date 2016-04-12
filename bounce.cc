@@ -1,77 +1,8 @@
-#include <iostream>
-#include <algorithm>
+#include "particle.h"
+#include "screen.h"
 
-const int maxColumn = 80;
-const int minColumn = 0;
 
 const int particleAmount = 4;
-
-class Screen {
-  const int screenSize;
-  char* screen;
-public:
-  Screen(int screenSize) : 
-        screenSize(screenSize),
-        screen(new char[screenSize]) { }
-
-  Screen(const Screen& orig) :
-      screenSize(orig.screenSize),
-      screen(new char[screenSize]) {
-    std::copy(orig.screen, orig.screen + screenSize, this->screen);
-  }
-
-  ~Screen() {
-    delete[] screen;
-  }
-
-  void clearScreen() {
-    for (int i = 0; i < screenSize; i++) {
-      screen[i] = ' ';
-    }
-  }
-
-  void drawScreen() {
-    for (int i = 0; i < screenSize; i++) {
-      std::cout << screen[i];
-    }
-    std::cout << std::endl;
-  }
-
-  char& operator[](unsigned pos) {
-    return screen[pos];
-  }
-};
-
-class Particle {
-  char symbol;
-  double position;
-  double speed;
-public:
-  Particle() {
-    this->symbol = 'o';
-    this->position = 0;
-    this->speed = 1;
-  }
-  void set(char symbol, double position, double speed) {
-    this->symbol = symbol;
-    this->position = position;
-    this->speed = speed;
-  }
-  void drawParticle(Screen& screen) const {
-    screen[this->position] = this->symbol;
-  }
-
-  void moveParticle() {
-      position += speed;
-      if (this->position >= maxColumn) {
-        this->position = maxColumn;
-        this->speed = -this->speed;
-      } else if (this->position < minColumn) {
-        this->position = minColumn;
-        this->speed = -this->speed;
-      }    
-  }
-};
 
 
 int main() {
