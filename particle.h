@@ -3,8 +3,8 @@
 
 #include "screen.h"
 
-extern const int maxColumn;
-extern const int minColumn;
+static int maxColumn = 80;
+static int minColumn = 0;
 
 class Particle {
   char symbol;

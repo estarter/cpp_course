@@ -19,6 +19,7 @@ int main() {
   int stopTime = 60;
 
   while (timeStep < stopTime) {
+    maxColumn--;
     screen.clearScreen();
     for (int i = 0; i < particleAmount; i++) {
       particleList[i].drawParticle(screen);

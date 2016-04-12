@@ -1,8 +1,5 @@
 #include "particle.h"
 
-extern const int maxColumn = 80;
-extern const int minColumn = 0;
-
 Particle::Particle() {
   this->symbol = 'o';
   this->position = 0;
