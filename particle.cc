@@ -1,4 +1,5 @@
 #include "particle.h"
+#include "screen.h"
 
 extern const int maxColumn = 80;
 extern const int minColumn = 0;

@@ -1,7 +1,7 @@
 #ifndef PARTICLE_H
 #define PARTICLE_H
 
-#include "screen.h"
+class Screen;
 
 extern const int maxColumn;
 extern const int minColumn;
