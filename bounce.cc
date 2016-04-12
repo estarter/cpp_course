@@ -1,15 +1,48 @@
 #include <iostream>
+#include <algorithm>
 
 const int maxColumn = 80;
 const int minColumn = 0;
-const int screenSize = maxColumn+1;
 
 const int particleAmount = 4;
 
-struct Particle {
+class Screen {
+  const int screenSize;
+  char* screen;
+public:
+  Screen(int screenSize) : 
+        screenSize(screenSize),
+        screen(new char[screenSize]) { }
+  Screen(Screen & orig) :
+      screenSize(orig.screenSize),
+      screen(new char[screenSize]) {
+    std::copy(orig.screen, orig.screen + screenSize, this->screen);
+  }
+  ~Screen() {
+    delete[] screen;
+  }
+
+  void clearScreen() {
+    for (int i = 0; i < screenSize; i++) {
+      screen[i] = ' ';
+    }
+  }
+  void drawScreen() {
+    for (int i = 0; i < screenSize; i++) {
+      std::cout << screen[i];
+    }
+    std::cout << std::endl;
+  }
+  void setChar(int pos, char symbol) {
+    screen[pos] = symbol;
+  }
+};
+
+class Particle {
   char symbol;
   double position;
   double speed;
+public:
   Particle() {
     this->symbol = 'o';
     this->position = 0;
@@ -20,8 +53,8 @@ struct Particle {
     this->position = position;
     this->speed = speed;
   }
-  void drawParticle(char screen[]) const {
-    screen[static_cast<int>(this->position)] = this->symbol;
+  void drawParticle(Screen& screen) const {
+    screen.setChar(this->position, this->symbol);
   }
 
   void moveParticle() {
@@ -34,14 +67,11 @@ struct Particle {
         this->speed = -this->speed;
       }    
   }
-
 };
 
-void clearScreen(char* screen);
-void drawScreen(char screen[]);
 
 int main() {
-  char* screen = new char[screenSize];
+  Screen screen(maxColumn+1);
 
   Particle particleList[particleAmount];
 
@@ -54,26 +84,12 @@ int main() {
   int stopTime = 60;
 
   while (timeStep < stopTime) {
-    clearScreen(screen);
+    screen.clearScreen();
     for (int i = 0; i < particleAmount; i++) {
       particleList[i].drawParticle(screen);
       particleList[i].moveParticle();
     }
-    drawScreen(screen);
+    screen.drawScreen();
     timeStep++;
   }
-  delete[] screen;
-}
-
-void clearScreen(char* screen) {
-  char * end = screen + screenSize;
-  for (; screen < end; screen++) {
-    *screen = ' ';
-  }
-}
-void drawScreen(char screen[]) {
-  for (int i = 0; i < screenSize; i++) {
-    std::cout << screen[i];
-  }
-  std::cout << std::endl;
 }
