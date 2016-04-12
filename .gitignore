@@ -1,4 +1,6 @@
 *out
 *.o
+*.a
 *.d
 bounce
+particle_test
