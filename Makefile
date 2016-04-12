@@ -18,7 +18,7 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 # trailing _.
 GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
 
-all: bounce particle_test
+all: bounce bounce_test
 
 # 1.  Save this file in your source directory under the name
 #     'Makefile'.
@@ -57,7 +57,7 @@ bounce: $(SOURCES:%.cc=%.o)
 	$(CXX) -o $@ $^ $(LDFLAGS)
 
 clean:
-	rm *.o *.a *.d bounce particle_test
+	rm *.o *.a *.d bounce bounce_test
 
 -include $(SOURCES:%.cc=%.d)
 
@@ -83,5 +83,11 @@ particle_test.o: test/particle_test.cc $(GTEST_HEADERS)
 	# TODO how to include sources?
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c test/particle_test.cc -I.
 
-particle_test: screen.o particle.o particle_test.o gtest_main.a
+screen_test.o: test/screen_test.cc $(GTEST_HEADERS)
+	# TODO how to include sources?
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c test/screen_test.cc -I.
+
+bounce_test: screen.o particle.o particle_test.o screen_test.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
+
+# TODO how to run test program from Makefile
