@@ -1,7 +1,7 @@
 # cpp_course
 
 ## Intro
-Following Jacek's C++ course at CERN
+Following Jacek Generowicz's C++ course at CERN
 
 Materials: http://jacek.web.cern.ch/jacek/courses/c++1/course.html
 
