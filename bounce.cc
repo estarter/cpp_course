@@ -13,7 +13,7 @@ public:
   Screen(int screenSize) : 
         screenSize(screenSize),
         screen(new char[screenSize]) { }
-  Screen(Screen & orig) :
+  Screen(const Screen& orig) :
       screenSize(orig.screenSize),
       screen(new char[screenSize]) {
     std::copy(orig.screen, orig.screen + screenSize, this->screen);
@@ -33,8 +33,8 @@ public:
     }
     std::cout << std::endl;
   }
-  void setChar(int pos, char symbol) {
-    screen[pos] = symbol;
+  char& operator[](unsigned pos) {
+    return screen[pos];
   }
 };
 
@@ -54,7 +54,7 @@ public:
     this->speed = speed;
   }
   void drawParticle(Screen& screen) const {
-    screen.setChar(this->position, this->symbol);
+    screen[this->position] = this->symbol;
   }
 
   void moveParticle() {
