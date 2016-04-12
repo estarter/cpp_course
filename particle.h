@@ -13,6 +13,7 @@ class Particle {
 public:
   Particle();
   void set(char symbol, double position, double speed);
+  double getPosition() { return position; };
   void drawParticle(Screen& screen) const;
   void moveParticle();
 };
