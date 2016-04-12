@@ -13,11 +13,13 @@ public:
   Screen(int screenSize) : 
         screenSize(screenSize),
         screen(new char[screenSize]) { }
+
   Screen(const Screen& orig) :
       screenSize(orig.screenSize),
       screen(new char[screenSize]) {
     std::copy(orig.screen, orig.screen + screenSize, this->screen);
   }
+
   ~Screen() {
     delete[] screen;
   }
@@ -27,12 +29,14 @@ public:
       screen[i] = ' ';
     }
   }
+
   void drawScreen() {
     for (int i = 0; i < screenSize; i++) {
       std::cout << screen[i];
     }
     std::cout << std::endl;
   }
+
   char& operator[](unsigned pos) {
     return screen[pos];
   }
