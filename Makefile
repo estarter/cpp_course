@@ -8,7 +8,7 @@
 
 # Instructions for use:
 
-GTEST_DIR = /opt/src/git/googletest/googletest
+GTEST_DIR = ./googletest/googletest
 
 CPPFLAGS += -isystem $(GTEST_DIR)/include
 GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
