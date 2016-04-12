@@ -57,7 +57,7 @@ bounce: $(SOURCES:%.cc=%.o)
 	$(CXX) -o $@ $^ $(LDFLAGS)
 
 clean:
-	rm *.o *.d bounce particle_test
+	rm *.o *.a *.d bounce particle_test
 
 -include $(SOURCES:%.cc=%.d)
 
