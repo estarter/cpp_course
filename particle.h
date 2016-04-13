@@ -23,6 +23,7 @@ public:
 
 class MagicParticle : public Particle {
 public:
+    MagicParticle(char symbol, double position, double speed) : Particle(symbol, position, speed) {}
     virtual void moveParticle();
 };
 #endif

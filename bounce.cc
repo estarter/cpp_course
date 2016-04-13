@@ -19,22 +19,20 @@ int main() {
     } else {
         int i = 1;
         do {
-            char type;
-            in >> type;
-            Particle* p;
-            if (type == 'm') {
-                p = new MagicParticle();
-                in >> *p;
-            } else if (type == 'p') {
-                p = new Particle();
-                in >> *p;
-            }
+            char type, symbol;
+            double position, speed;
+            in >> type >> symbol >> position >> speed;
             if (in.eof()) break;
             if (!in.good()) {
                 std::cerr << "Bad data in file: " << filename << " , line number: " << i << std::endl;
                 return EXIT_FAILURE;
             }
-            particleList.push_back(p);
+
+            if (type == 'm') {
+                particleList.push_back(new MagicParticle(symbol, position, speed));
+            } else if (type == 'p') {
+                particleList.push_back(new Particle(symbol, position, speed));
+            }
             i++;
         } while (!in.eof());
     }
