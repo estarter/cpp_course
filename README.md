@@ -3,7 +3,10 @@
 ## Intro
 Following Jacek Generowicz's C++ course at CERN
 
-Materials: http://jacek.web.cern.ch/jacek/courses/c++1/course.html
+Materials:
+
+1. http://jacek.web.cern.ch/jacek/courses/c++1/course.html
+2. http://jacek.web.cern.ch/jacek/courses/c++-modern/course.html
 
 ## QA
 Unit testing is done using google test (https://github.com/google/googletest)  
