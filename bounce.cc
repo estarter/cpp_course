@@ -20,14 +20,11 @@ int main() {
         in >> particleAmount;
         particleList = new Particle[particleAmount];
         for (int i = 0; i < particleAmount; i++) {
-            char sym;
-            double pos, speed;
-            in >> sym >> pos >> speed;
+            in >> particleList[i];
             if (!in.good()) {
                 std::cerr << "Bad data in file: " << filename << " , line number: " << i+2 << std::endl;
                 return EXIT_FAILURE;
             }
-            particleList[i].set(sym, pos, speed);
         }
     }
 

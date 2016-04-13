@@ -9,11 +9,6 @@ Particle::Particle() {
   this->position = 0;
   this->speed = 1;
 }
-void Particle::set(char symbol, double position, double speed) {
-  this->symbol = symbol;
-  this->position = position;
-  this->speed = speed;
-}
 void Particle::drawParticle(Screen& screen) const {
   screen[this->position] = this->symbol;
 }
@@ -27,4 +22,8 @@ void Particle::moveParticle() {
       this->position = minColumn;
       this->speed = -this->speed;
     }    
+}
+
+std::istream& operator>>(std::istream& in, Particle& p) {
+    return in >> p.symbol >> p.position >> p.speed;
 }
