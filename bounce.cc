@@ -9,8 +9,7 @@
 
 int main() {
     Screen screen(maxColumn+1);
-    std::vector<Particle> particleList;
-
+    std::vector<Particle*> particleList;
 
     std::string filename = "bounce.cfg";
     std::ifstream in(filename);
@@ -20,8 +19,16 @@ int main() {
     } else {
         int i = 1;
         do {
-            Particle p;
-            in >> p;
+            char type;
+            in >> type;
+            Particle* p;
+            if (type == 'm') {
+                p = new MagicParticle();
+                in >> *p;
+            } else if (type == 'p') {
+                p = new Particle();
+                in >> *p;
+            }
             if (in.eof()) break;
             if (!in.good()) {
                 std::cerr << "Bad data in file: " << filename << " , line number: " << i << std::endl;
@@ -38,8 +45,8 @@ int main() {
     while (timeStep < stopTime) {
         screen.clearScreen();
         for (int i = 0; i < particleList.size(); i++) {
-            particleList[i].drawParticle(screen);
-            particleList[i].moveParticle();
+            particleList[i]->drawParticle(screen);
+            particleList[i]->moveParticle();
         }
         screen.drawScreen();
         timeStep++;
