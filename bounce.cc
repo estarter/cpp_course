@@ -1,19 +1,31 @@
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
 #include "particle.h"
 #include "screen.h"
 
 
-const int particleAmount = 4;
-
-
 int main() {
   Screen screen(maxColumn+1);
+  Particle* particleList;
 
-  Particle particleList[particleAmount];
+  int particleAmount;
 
-  particleList[0].set('x', 1, 1.1);
-  particleList[1].set('+', 2, 2.1);
-  particleList[2].set('a', 3, 3.1);
-  particleList[3].set('b', 4, 4.1);
+  std::string filename = "bounce.cfg";
+  std::ifstream in(filename);
+  if (!in) {
+    std::cerr << "Could not open file: " << filename << std::endl;
+    return EXIT_FAILURE;
+  } else {
+    in >> particleAmount;
+    particleList = new Particle[particleAmount];
+    for (int i = 0; i < particleAmount; i++) {
+      char sym;
+      double pos, speed;
+      in >> sym >> pos >> speed;
+      particleList[i].set(sym, pos, speed);
+    }
+  }
 
   int timeStep = 0;
   int stopTime = 60;
