@@ -17,6 +17,9 @@ public:
     Particle();
     Particle(char symbol, double position, double speed);
     virtual ~Particle() {}
+    char getSymbol() { return symbol;};
+    double getPosition() { return position;};
+    double getSpeed() { return speed;}
     void drawParticle(Screen& screen) const;
     virtual void moveParticle() = 0;
     friend std::istream& operator>>(std::istream&, Particle& p);
