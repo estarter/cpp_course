@@ -11,7 +11,12 @@ void Particle::drawParticle(Screen& screen) const {
   screen[this->position] = this->symbol;
 }
 
-void Particle::moveParticle() {
+std::istream& operator>>(std::istream& in, Particle& p) {
+    return in >> p.symbol >> p.position >> p.speed;
+}
+
+
+void NormalParticle::moveParticle() {
     position += speed;
     if (this->position >= maxColumn) {
         this->position = maxColumn;
@@ -22,9 +27,6 @@ void Particle::moveParticle() {
     }    
 }
 
-std::istream& operator>>(std::istream& in, Particle& p) {
-    return in >> p.symbol >> p.position >> p.speed;
-}
 
 void MagicParticle::moveParticle() {
     position += speed;

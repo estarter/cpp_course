@@ -31,7 +31,7 @@ int main() {
             if (type == 'm') {
                 particleList.push_back(new MagicParticle(symbol, position, speed));
             } else if (type == 'p') {
-                particleList.push_back(new Particle(symbol, position, speed));
+                particleList.push_back(new NormalParticle(symbol, position, speed));
             }
             i++;
         } while (!in.eof());
@@ -48,5 +48,9 @@ int main() {
         }
         screen.drawScreen();
         timeStep++;
+    }
+
+    for (int i = 0; i < particleList.size(); i++) {
+        delete particleList[i];
     }
 }
