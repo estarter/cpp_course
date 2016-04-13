@@ -90,4 +90,7 @@ screen_test.o: test/screen_test.cc $(GTEST_HEADERS)
 bounce_test: screen.o particle.o particle_test.o screen_test.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
 
+test: bounce_test
+	./bounce_test
+
 # TODO how to run test program from Makefile
