@@ -22,5 +22,9 @@ Googletest are linked as submodule, to update use command
 ## Related
 
 Tools:
-- Valgrind for memory leak check: http://valgrind.org/
+- Valgrind for memory leak run-time analysis: http://valgrind.org/
 
+```bash
+    clang++ -Wall -ansi -pedantic -std=c++14 -g main.cc # add -g flag to give to valgrind an access to the sources
+    valgrind --leak-check=full ./a.out
+```
