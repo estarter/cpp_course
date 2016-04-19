@@ -9,6 +9,10 @@ Materials:
 2. http://jacek.web.cern.ch/jacek/courses/c++-modern/course.html
 3. http://jacek.web.cern.ch/jacek/courses/c++-generic-and-STL/course.html
 
+Resources:
+
+1. http://en.cppreference.com/ (or http://www.cplusplus.com/)
+
 ## QA
 Unit testing is done using google test (https://github.com/google/googletest)  
 Googletest are linked as submodule, to update use command
