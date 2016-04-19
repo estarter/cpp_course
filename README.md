@@ -7,6 +7,7 @@ Materials:
 
 1. http://jacek.web.cern.ch/jacek/courses/c++1/course.html
 2. http://jacek.web.cern.ch/jacek/courses/c++-modern/course.html
+3. http://jacek.web.cern.ch/jacek/courses/c++-generic-and-STL/course.html
 
 ## QA
 Unit testing is done using google test (https://github.com/google/googletest)  
