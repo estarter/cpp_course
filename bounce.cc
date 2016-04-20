@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <vector>
+#include <list>
 #include <memory>
 #include "particle.h"
 #include "screen.h"
@@ -10,7 +10,7 @@
 
 int main() {
     Screen screen(maxColumn+1);
-    std::vector<std::unique_ptr<Particle>> particleList;
+    std::list<std::unique_ptr<Particle>> particleList;
 
     std::string filename = "bounce.cfg";
     std::ifstream in(filename);
