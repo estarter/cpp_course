@@ -16,12 +16,12 @@ Resources:
 ## STL notes 
 
 ###Containers:
-- sequential 
+- sequential (performance: [table](http://john-ahlgren.blogspot.ch/2013/10/stl-container-performance.html) or [flowchart](http://stackoverflow.com/questions/10699265/how-can-i-efficiently-select-a-standard-library-container-in-c11) from [source](http://homepages.e3.net.nz/~djm/cppcontainers.html))
  - vector - resizable array
  - list - double linked list
+ - deque - (list of arrays) double ended queue
  - forward_list - single linked list
- - deque - list of arrays
- - array - fixed size
+ - array - fixed size array
 - associative
  - set - binary tree, unique values kept ordered 
  - map - binary tree, key-values container with unique keys
@@ -57,7 +57,7 @@ Typical signature: ```std::alg(InputIt begin, InputIt end, OutputIt out)```
 - more algs: http://en.cppreference.com/w/cpp/header/algorithm
 
 ### Others
-- std::numeric_limits<int>::max() - max value for int
+- `std::numeric_limits<int>::max()` - max value for int
 - std::plus and other functional objects from http://en.cppreference.com/w/cpp/utility/functional
 - std::sort / std::make_heap / std::binary_search / std::boyer_moore_searcher
 - std::is_permutation / std::next_permutation / std::prev_permutation
