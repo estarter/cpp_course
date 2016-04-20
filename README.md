@@ -58,6 +58,9 @@ An algorithm may have alg_if, alg_n, alg_backward, ... implementations.
 - more algs: http://en.cppreference.com/w/cpp/header/algorithm
 
 ### Others
+- type deduction: `auto` type for variables, `template` for function arguments
+- `std::unique_ptr`, `std::shared_ptr` and `std::weak_ptr` smart pointers, created by `std::make_unique`, ...
+- `std::move` to allow the move semantic (`type&& var`)
 - `std::numeric_limits<int>::max()` - max value for int
 - `std::plus` and other functional objects from http://en.cppreference.com/w/cpp/utility/functional
 - `std::sort` / `std::make_heap` / `std::binary_search` / `std::boyer_moore_searcher`
