@@ -4,3 +4,4 @@
 *.d
 bounce
 bounce_test
+*.dSYM
