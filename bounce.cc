@@ -3,13 +3,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <memory>
 #include "particle.h"
 #include "screen.h"
 
 
 int main() {
     Screen screen(maxColumn+1);
-    std::vector<Particle*> particleList;
+    std::vector<std::unique_ptr<Particle>> particleList;
 
     std::string filename = "bounce.cfg";
     std::ifstream in(filename);
@@ -29,9 +30,9 @@ int main() {
             }
 
             if (type == 'm') {
-                particleList.push_back(new MagicParticle(symbol, position, speed));
+                particleList.push_back(std::make_unique<MagicParticle>(symbol, position, speed));
             } else if (type == 'p') {
-                particleList.push_back(new NormalParticle(symbol, position, speed));
+                particleList.push_back(std::make_unique<NormalParticle>(symbol, position, speed));
             }
             i++;
         } while (!in.eof());
@@ -48,9 +49,5 @@ int main() {
         }
         screen.drawScreen();
         timeStep++;
-    }
-
-    for (int i = 0; i < particleList.size(); i++) {
-        delete particleList[i];
     }
 }

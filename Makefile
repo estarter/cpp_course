@@ -36,7 +36,7 @@ all: bounce test
 # 4a. If you are using nonstandard libraries, you may have to specify
 #     include directories here ...
 	# -I /usr/local/include/SomeLibrary
-CXXFLAGS += -ansi -pedantic -Wall
+CXXFLAGS += -ansi -pedantic -Wall -std=c++14 -g
 # 4b. ... and library directories here.
 	# -L /usr/local/lib/SomeLibrary
 LDFLAGS +=  
