@@ -78,3 +78,9 @@ Tools:
     clang++ -Wall -ansi -pedantic -std=c++14 -g main.cc # add -g flag to give to valgrind an access to the sources
     valgrind --leak-check=full ./a.out
 ```
+
+More info about memory consumption:
+```bash
+valgrind --tool=massif ./a.out
+ms_print massif.out.1928 > out.txt
+```
