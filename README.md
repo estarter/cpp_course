@@ -23,12 +23,20 @@ Resources:
  - swap
 
 - type deduction: `auto` type for variables, `template` for function arguments
-- `std::move` to allow the move semantic (`type&& var`)
+- move semantic
+ - `type&& var` to accept rvalue
+ - `std::move` to convert lvalue to rvalue
+ - one technique to move action is to swap orig and moved objects (than destructor will clean it nicely)
+- emplacement 
+- RAII
 - use smart pointers instead of pointers:
  - `std::unique_ptr`, `std::shared_ptr` and `std::weak_ptr` , created by `std::make_unique`, `std::make_shared`
  - `.get()` and `.release()` (cmp to `std::move(pt)`) returns internal pointer
+ - `.lock()` on weak_ptr will return new shared_ptr to access an object
  - `std::auto_ptr` is depricated
-- function class implements operator() and can be used as an alternative to labmda
+ - `nullptr` keyword
+- `std::function` templates to unify function's ref syntax
+- functor class implements operator() and can be used as an alternative to labmda
 - `decltype` allows to define a variable by calculated type
 - initializer_list `std::vector<int> v {1,2,3}`
 - constructor inheritance `using Base::Base`
