@@ -43,9 +43,9 @@ int main() {
 
     while (timeStep < stopTime) {
         screen.clearScreen();
-        for (int i = 0; i < particleList.size(); i++) {
-            particleList[i]->drawParticle(screen);
-            particleList[i]->moveParticle();
+        for (auto& particle : particleList) {
+            particle->drawParticle(screen);
+            particle->moveParticle();
         }
         screen.drawScreen();
         timeStep++;
