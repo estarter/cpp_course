@@ -79,7 +79,7 @@ Tools:
     valgrind --leak-check=full ./a.out
 ```
 
-More info about memory consumption:
+More info about memory consumption ([source](https://blog.posativ.org/2011/profiling-memory-and-cpu-time-of-python-programs-on-os-x/)):
 ```bash
 valgrind --tool=massif ./a.out
 ms_print massif.out.1928 > out.txt
