@@ -13,6 +13,28 @@ Resources:
 
 1. http://en.cppreference.com/ (or http://www.cplusplus.com/)
 
+## Modern c++ notes
+- The Rule of Five (and a half) - once you implement one of it, implement them all:
+ - Copy constructor
+ - Copy assignment operator
+ - Destructor
+ - Move constructor
+ - Move assignment operator
+ - swap
+
+- type deduction: `auto` type for variables, `template` for function arguments
+- `std::move` to allow the move semantic (`type&& var`)
+- use smart pointers instead of pointers:
+ - `std::unique_ptr`, `std::shared_ptr` and `std::weak_ptr` , created by `std::make_unique`, `std::make_shared`
+ - `.get()` and `.release()` (cmp to `std::move(pt)`) returns internal pointer
+ - `std::auto_ptr` is depricated
+- function class implements operator() and can be used as an alternative to labmda
+- `decltype` allows to define a variable by calculated type
+- initializer_list `std::vector<int> v {1,2,3}`
+- constructor inheritance `using Base::Base`
+- use `override` and `virtual` keywords in inheritance' overriding
+
+
 ## STL notes 
 
 ###Containers:
@@ -58,9 +80,6 @@ An algorithm may have alg_if, alg_n, alg_backward, ... implementations.
 - more algs: http://en.cppreference.com/w/cpp/header/algorithm
 
 ### Others
-- type deduction: `auto` type for variables, `template` for function arguments
-- `std::unique_ptr`, `std::shared_ptr` and `std::weak_ptr` smart pointers, created by `std::make_unique`, ...
-- `std::move` to allow the move semantic (`type&& var`)
 - `std::numeric_limits<int>::max()` - max value for int
 - `std::plus` and other functional objects from http://en.cppreference.com/w/cpp/utility/functional
 - `std::sort` / `std::make_heap` / `std::binary_search` / `std::boyer_moore_searcher`
