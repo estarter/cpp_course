@@ -52,7 +52,8 @@ Typical signature: ```std::alg(InputIt begin, InputIt end, OutputIt out)```
 - [vector,deque].insert - faster than inserter iterator or std::copy 
 - std::transform - copy with modification
 - std::accumulate - reduce to return a single item (sum, max, multiplication, ...)
-- std::find (std::find_if) - iterator to the first element matching criteria
+- std::find (std::find_if) - return an iterator to the first element matching criteria
+- std::remove - don't forget to call erase ```v.erase(remove(begin(v), end(v), 666), end(v));```
 - more algs: http://en.cppreference.com/w/cpp/header/algorithm
 
 ## QA
