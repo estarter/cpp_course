@@ -56,6 +56,12 @@ Typical signature: ```std::alg(InputIt begin, InputIt end, OutputIt out)```
 - std::remove - don't forget to call erase ```v.erase(remove(begin(v), end(v), 666), end(v));```
 - more algs: http://en.cppreference.com/w/cpp/header/algorithm
 
+### Others
+- std::numeric_limits<int>::max() - max value for int
+- std::plus and other functional objects from http://en.cppreference.com/w/cpp/utility/functional
+- std::sort / std::make_heap / std::binary_search / std::boyer_moore_searcher
+- std::is_permutation / std::next_permutation / std::prev_permutation
+
 ## QA
 Unit testing is done using google test (https://github.com/google/googletest)  
 Googletest are linked as submodule, to update use command
